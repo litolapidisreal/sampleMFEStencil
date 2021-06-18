@@ -20,3 +20,42 @@
     background-color: #014e92;
   }
 }
+
+.base-panel {
+  .head-panel {
+    background: #32616B;
+    padding: 1em;
+    color: #FFFFFF;
+  }
+
+  .body-panel {
+    background: #EAEAE9;
+    padding: 1em;
+
+    h4 {
+      color: #487380;
+    }
+
+    .sub-body-panel {
+      background: #E0E0E1;
+      padding: 1em;
+    }
+  }
+
+  .col-form-label {
+    color: #878A8E;
+    font-weight: bold;
+  }
+
+ .tc {
+    color: #000000;
+
+    .terms {
+      color:#EABE53;
+    }
+  }
+
+  .h4-title {
+    color: #487380;
+  }
+}

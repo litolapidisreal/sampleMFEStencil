@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property   | Attribute   | Description | Type     | Default     |
-| ---------- | ----------- | ----------- | -------- | ----------- |
-| `cssClass` | `css-class` |             | `string` | `undefined` |
-| `jwt`      | `jwt`       |             | `string` | `undefined` |
+| Property   | Attribute   | Description | Type      | Default     |
+| ---------- | ----------- | ----------- | --------- | ----------- |
+| `cssClass` | `css-class` |             | `string`  | `undefined` |
+| `jwt`      | `jwt`       |             | `string`  | `undefined` |
+| `valid`    | `valid`     |             | `boolean` | `undefined` |
 
 
 ----------------------------------------------

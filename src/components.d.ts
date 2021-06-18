@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface AddForm {
+        "jwt": any;
         "text": string;
     }
     interface ButtonComponent {
@@ -28,12 +29,15 @@ export namespace Components {
         "middle": string;
     }
     interface RedeemForm {
+        "jwt": any;
     }
     interface SwitchForm {
+        "jwt": any;
     }
     interface UserComponent {
         "cssClass": string;
         "jwt": string;
+        "valid": boolean;
     }
 }
 declare global {
@@ -84,6 +88,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface AddForm {
+        "jwt"?: any;
         "onEmitter"?: (event: CustomEvent<any>) => void;
         "text"?: string;
     }
@@ -106,12 +111,15 @@ declare namespace LocalJSX {
         "onCompleted"?: (event: CustomEvent<any>) => void;
     }
     interface RedeemForm {
+        "jwt"?: any;
     }
     interface SwitchForm {
+        "jwt"?: any;
     }
     interface UserComponent {
         "cssClass"?: string;
         "jwt"?: string;
+        "valid"?: boolean;
     }
     interface IntrinsicElements {
         "add-form": AddForm;

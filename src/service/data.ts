@@ -28,11 +28,11 @@ class DataController {
 
   }
 
-  async changeAddress(data: any) {
+  async changeAddress(data: any, token: any) {
     try {
       let header = new Headers({
         "Content-Type" : "application/json",
-        'token': Math.random().toString(36).substr(2, 9)
+        'Authorization': 'Bearer ' + token
       });
 
       const response = await fetch(`${this.API_URL}/changeAddress`, {
@@ -48,11 +48,11 @@ class DataController {
     }
   }
 
-  async addFund(data: any) {
+  async addFund(data: any, token: any) {
     try {
       let header = new Headers({
         "Content-Type" : "application/json",
-        'token': Math.random().toString(36).substr(2, 9)
+        'Authorization': 'Bearer ' + token
       });
 
       const response = await fetch(`${this.API_URL}/addFund`, {
@@ -67,11 +67,11 @@ class DataController {
     }
   }
 
-  async switchFund(data: any) {
+  async switchFund(data: any, token: any) {
     try {
       let header = new Headers({
         "Content-Type" : "application/json",
-        'token': Math.random().toString(36).substr(2, 9)
+        'Authorization': 'Bearer ' + token
       });
 
       const response = await fetch(`${this.API_URL}/switchFund`, {
@@ -86,11 +86,11 @@ class DataController {
     }
   }
 
-  async redeemFund(data: any) {
+  async redeemFund(data: any, token: any) {
     try {
       let header = new Headers({
         "Content-Type" : "application/json",
-        'token': Math.random().toString(36).substr(2, 9)
+        'Authorization': 'Bearer ' + token
       });
 
       const response = await fetch(`${this.API_URL}/redeemFund`, {

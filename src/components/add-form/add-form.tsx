@@ -21,6 +21,8 @@ export class AddForm {
     termsAgreement: false
   }
 
+  @Prop() jwt: any;
+
   @Prop() text: string;
 
   @State() formStep: number = 0;
@@ -32,70 +34,89 @@ export class AddForm {
   addForm() {
     let content = (
       <div>
-        { this.formStep < this.MAX_STEP && (
+        {this.formStep < this.MAX_STEP && (
           <div>
-            { this.formStep > 0 && (
+            {this.formStep > 0 && (
               <button class="btn primary" type="button" onClick={this.previousPage}>Back  </button>
             )}
-            <p>Step { this.formStep + 1 } of { this.MAX_STEP }</p>
+            <p>Step {this.formStep + 1} of {this.MAX_STEP}</p>
           </div>
         )}
-        { this.formStep == 0 && (
+        {this.formStep == 0 && (
           <section id="section1">
-          <div class="mb-3">
-            <label class="col-form-label">Bank Name</label>
-            <input type="text" class="form-control col-5"
-            value={this.controls.bankName}
-            onInput={(e: any) => this.controlValue('bankName', e.target.value)} />
-          </div>
-          <div class="mb-3">
-            <label class="col-form-label">Deposit amount</label>
-            <input type="text" class="form-control col-5"
-            value={this.controls.depositAmount}
-            onInput={(e: any) => this.controlValue('depositAmount', e.target.value)}/>
-          </div>
-          <div class="mb-3">
-            <label class="col-form-label">Date of Deposit</label>
-            <input type="date" class="form-control col-5"
-            value={this.controls.dateOfDeposit}
-            onInput={(e: any) => this.controlValue('dateOfDeposit', e.target.value)}/>
-          </div>
-        </section>
+            <div class="mb-3">
+              <label class="col-form-label">Bank Name</label>
+              <select class="form-control"
+                onInput={(e: any) => this.controlValue('bankName', e.target.value)} >
+                <option selected disabled>--Select one--</option>
+                <option value="Bank1" selected={this.controls.bankName === 'Bank1'}>Bank 1</option>
+                <option value="Bank2" selected={this.controls.bankName === 'Bank2'}>Bank 2</option>
+                <option value="Bank3" selected={this.controls.bankName === 'Bank3'}>Bank 3</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="col-form-label">Deposit amount</label>
+              <input type="text" class="form-control"
+                value={this.controls.depositAmount}
+                onInput={(e: any) => this.controlValue('depositAmount', e.target.value)} />
+            </div>
+            <div class="mb-3">
+              <label class="col-form-label">Date of Deposit</label>
+              <input type="date" class="form-control"
+                value={this.controls.dateOfDeposit}
+                onInput={(e: any) => this.controlValue('dateOfDeposit', e.target.value)} />
+            </div>
+          </section>
         )}
-        { this.formStep == 1 && (
+        {this.formStep == 1 && (
           <section id="section2">
-          <div class="mb-3">
-            <label class="col-form-label">Fund Type</label>
-            <input type="text" class="form-control col-5"
-            value={this.controls.fundType}
-            onInput={(e: any) => this.controlValue('fundType', e.target.value)}/>
-          </div>
-          <div class="mb-3">
-            <label class="col-form-label">Sales load</label>
-            <input type="text" class="form-control col-5"
-            value={this.controls.salesLoad}
-            onInput={(e: any) => this.controlValue('salesLoad', e.target.value)}/>
-          </div>
-          <div class="mb-3">
-            <label class="col-form-label">Invesment Amount</label>
-            <input type="text" class="form-control col-5"
-            value={this.controls.investmentAmount}
-            onInput={(e: any) => this.controlValue('investmentAmount', e.target.value)}/>
-          </div>
-          <div class="mb-3">
-            <label class="col-form-label">Source of funds</label>
-            <input type="text" class="form-control col-5"
-            value={this.controls.sourceOfFunds}
-            onInput={(e: any) => this.controlValue('sourceOfFunds', e.target.value)}/>
-          </div>
-          <div class="mb-3">
-            <input type="checkbox"
-            checked={this.controls.termsAgreement}
-            onChange={(e: any) => this.controlValue('termsAgreement', e.target.checked)}
-            />
-            <label class="col-form-label">I agree to the Terms and Conditions</label>
-          </div>
-        </section>
+            <h4>Fund</h4>
+            <div class="sub-body-panel">
+              <div class="mb-3">
+                <label class="col-form-label">Fund Type</label>
+                <select class="form-control"
+                  onInput={(e: any) => this.controlValue('fundType', e.target.value)} >
+                  <option selected disabled>--Select one--</option>
+                  <option value="fund type 1" selected={this.controls.fundType === 'fund type 1'}>Fund type 1</option>
+                  <option value="fund type 2" selected={this.controls.fundType === 'fund type 2'}>Fund type 2</option>
+                  <option value="fund type 3" selected={this.controls.fundType === 'fund type 3'}>Fund type 3</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="col-form-label">Sales load</label>
+                <select class="form-control"
+                  onInput={(e: any) => this.controlValue('salesLoad', e.target.value)} >
+                  <option selected disabled>--Select one--</option>
+                  <option value="sales load 1" selected={this.controls.salesLoad === 'sales load 1'}>Sales load 1</option>
+                  <option value="sales load 2" selected={this.controls.salesLoad === 'sales load 1'}>Sales load 2</option>
+                  <option value="sales load 3" selected={this.controls.salesLoad === 'sales load 1'}>Sales load 3</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="col-form-label">Invesment Amount</label>
+                <input type="text" class="form-control"
+                  value={this.controls.investmentAmount}
+                  onInput={(e: any) => this.controlValue('investmentAmount', e.target.value)} />
+              </div>
+              <div class="mb-3">
+                <label class="col-form-label">Source of funds</label>
+                <select class="form-control"
+                  onInput={(e: any) => this.controlValue('sourceOfFunds', e.target.value)} >
+                  <option selected disabled>--Select one--</option>
+                  <option value="funds 1" selected={this.controls.sourceOfFunds === 'funds 1'}>funds 1</option>
+                  <option value="funds 2" selected={this.controls.sourceOfFunds === 'funds 2'}>funds 2</option>
+                  <option value="funds 3" selected={this.controls.sourceOfFunds === 'funds 3'}>funds 3</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <input type="checkbox" class="mr-1"
+                  checked={this.controls.termsAgreement}
+                  onChange={(e: any) => this.controlValue('termsAgreement', e.target.checked)}
+                />
+                <label class="tc">I agree to the <span class="terms">Terms and Conditions</span></label>
+              </div>
+            </div>
+          </section>
         )}
         {this.renderButton()}
       </div>
@@ -119,8 +140,8 @@ export class AddForm {
       return this.actionButton();
     } else {
       return (
-          <button type="button" class="btn btn-primary" onClick={this.nextStep}>Next</button>
-        );
+        <button type="button" class="btn btn-primary" onClick={this.nextStep}>Next</button>
+      );
     }
   }
 
@@ -134,7 +155,7 @@ export class AddForm {
   submitForm = (event: Event) => {
     event.preventDefault();
 
-    DataService.addFund(this.controls).then(val => {
+    DataService.addFund(this.controls, this.jwt).then(val => {
       console.log(val);
       return val;
     })
@@ -142,8 +163,8 @@ export class AddForm {
 
   actionButton() {
     return (
-      <div class="button">
-        <button type="submit" class="btn btn-success">Submit</button>
+      <div class="button mt-1">
+        <button type="submit" class="btn btn-block btn-secondary">Submit</button>
       </div>
     )
   }
@@ -152,10 +173,22 @@ export class AddForm {
     return (
       <Host>
         <div class="container mt-5">
-          <form onSubmit={e => this.submitForm(e)}>
-            {/* ADD FORM */}
-            {this.addForm()}
-          </form>
+          <div class="base-panel w-50">
+            {this.jwt
+              ? <section>
+                  <div class="head-panel">Add fund</div>
+                  <div class="body-panel">
+                    <form onSubmit={e => this.submitForm(e)}>
+                      {/* ADD FORM */}
+                      {this.addForm()}
+                    </form>
+                  </div>
+                </section>
+              : <div class="mt-2">
+                <p class="text-danger">Can't access <strong>add fund</strong> form.</p>
+              </div>
+            }
+          </div>
         </div>
       </Host>
     );

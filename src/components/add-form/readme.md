@@ -9,6 +9,7 @@
 
 | Property | Attribute | Description | Type     | Default     |
 | -------- | --------- | ----------- | -------- | ----------- |
+| `jwt`    | `jwt`     |             | `any`    | `undefined` |
 | `text`   | `text`    |             | `string` | `undefined` |
 
 
