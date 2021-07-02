@@ -1,0 +1,24 @@
+:host {
+  display: block;
+}
+.title {
+  text-align: center;
+}
+
+.content {
+  p {
+    text-align: center;
+  }
+
+  .verification-code {
+    text-align: center;
+
+    input {
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      max-width: 20px;
+      margin: 0 0.3em;
+    }
+  }
+}

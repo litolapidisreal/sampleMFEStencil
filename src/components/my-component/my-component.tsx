@@ -1,5 +1,5 @@
 import { Component, Prop, h, Event, Method, State } from '@stencil/core';
-import { format } from '../../utils/utils';
+// import { format } from '../../utils/utils';
 import { DataService } from './../../service/data';
 import { EventEmitter } from '../../../dist/types/stencil-public-runtime';
 
@@ -28,11 +28,11 @@ export class MyComponent {
 
   testText = [];
 
-  constructor() {}
+  constructor() { }
 
-  private getText(): string {
-    return format(this.first, this.middle, this.last);
-  }
+  // private getText(): string {
+  //   return format(this.first, this.middle, this.last);
+  // }
 
   @Event() completed: EventEmitter<any>;
 
@@ -63,8 +63,8 @@ export class MyComponent {
     // this.fetchData();
     return (
       <div>
-        Hello, World! I'm {this.getText()}
-        <br></br>
+        {/* Hello, World! I'm {this.getText()}
+        <br></br> */}
         {/* <button type="button" class="btn primary" onClick={this.fetchData.bind(this)}>Button from StencilJs</button> */}
         <slot></slot>
       </div>

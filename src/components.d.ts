@@ -8,10 +8,12 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface AddForm {
         "jwt": any;
-        "text": string;
     }
     interface ButtonComponent {
         "user_id": string;
+    }
+    interface FundsButton {
+        "image": string;
     }
     interface MyComponent {
         "fetchData": () => Promise<any>;
@@ -28,11 +30,30 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface OtpModal {
+        "visible": boolean;
+    }
+    interface PlainModal {
+        "visible": boolean;
+    }
     interface RedeemForm {
         "jwt": any;
     }
+    interface SummaryModal {
+        "visible": boolean;
+    }
     interface SwitchForm {
         "jwt": any;
+        "show": boolean;
+    }
+    interface SwitchFundModal {
+        "modalTitle": string;
+        "visible": boolean;
+    }
+    interface SwitchMobile {
+    }
+    interface TermsModal {
+        "visible": boolean;
     }
     interface UserComponent {
         "cssClass": string;
@@ -53,11 +74,29 @@ declare global {
         prototype: HTMLButtonComponentElement;
         new (): HTMLButtonComponentElement;
     };
+    interface HTMLFundsButtonElement extends Components.FundsButton, HTMLStencilElement {
+    }
+    var HTMLFundsButtonElement: {
+        prototype: HTMLFundsButtonElement;
+        new (): HTMLFundsButtonElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
+    };
+    interface HTMLOtpModalElement extends Components.OtpModal, HTMLStencilElement {
+    }
+    var HTMLOtpModalElement: {
+        prototype: HTMLOtpModalElement;
+        new (): HTMLOtpModalElement;
+    };
+    interface HTMLPlainModalElement extends Components.PlainModal, HTMLStencilElement {
+    }
+    var HTMLPlainModalElement: {
+        prototype: HTMLPlainModalElement;
+        new (): HTMLPlainModalElement;
     };
     interface HTMLRedeemFormElement extends Components.RedeemForm, HTMLStencilElement {
     }
@@ -65,11 +104,35 @@ declare global {
         prototype: HTMLRedeemFormElement;
         new (): HTMLRedeemFormElement;
     };
+    interface HTMLSummaryModalElement extends Components.SummaryModal, HTMLStencilElement {
+    }
+    var HTMLSummaryModalElement: {
+        prototype: HTMLSummaryModalElement;
+        new (): HTMLSummaryModalElement;
+    };
     interface HTMLSwitchFormElement extends Components.SwitchForm, HTMLStencilElement {
     }
     var HTMLSwitchFormElement: {
         prototype: HTMLSwitchFormElement;
         new (): HTMLSwitchFormElement;
+    };
+    interface HTMLSwitchFundModalElement extends Components.SwitchFundModal, HTMLStencilElement {
+    }
+    var HTMLSwitchFundModalElement: {
+        prototype: HTMLSwitchFundModalElement;
+        new (): HTMLSwitchFundModalElement;
+    };
+    interface HTMLSwitchMobileElement extends Components.SwitchMobile, HTMLStencilElement {
+    }
+    var HTMLSwitchMobileElement: {
+        prototype: HTMLSwitchMobileElement;
+        new (): HTMLSwitchMobileElement;
+    };
+    interface HTMLTermsModalElement extends Components.TermsModal, HTMLStencilElement {
+    }
+    var HTMLTermsModalElement: {
+        prototype: HTMLTermsModalElement;
+        new (): HTMLTermsModalElement;
     };
     interface HTMLUserComponentElement extends Components.UserComponent, HTMLStencilElement {
     }
@@ -80,9 +143,16 @@ declare global {
     interface HTMLElementTagNameMap {
         "add-form": HTMLAddFormElement;
         "button-component": HTMLButtonComponentElement;
+        "funds-button": HTMLFundsButtonElement;
         "my-component": HTMLMyComponentElement;
+        "otp-modal": HTMLOtpModalElement;
+        "plain-modal": HTMLPlainModalElement;
         "redeem-form": HTMLRedeemFormElement;
+        "summary-modal": HTMLSummaryModalElement;
         "switch-form": HTMLSwitchFormElement;
+        "switch-fund-modal": HTMLSwitchFundModalElement;
+        "switch-mobile": HTMLSwitchMobileElement;
+        "terms-modal": HTMLTermsModalElement;
         "user-component": HTMLUserComponentElement;
     }
 }
@@ -90,10 +160,14 @@ declare namespace LocalJSX {
     interface AddForm {
         "jwt"?: any;
         "onEmitter"?: (event: CustomEvent<any>) => void;
-        "text"?: string;
     }
     interface ButtonComponent {
         "user_id"?: string;
+    }
+    interface FundsButton {
+        "image"?: string;
+        "onOk"?: (event: CustomEvent<any>) => void;
+        "onToken"?: (event: CustomEvent<any>) => void;
     }
     interface MyComponent {
         /**
@@ -110,11 +184,31 @@ declare namespace LocalJSX {
         "middle"?: string;
         "onCompleted"?: (event: CustomEvent<any>) => void;
     }
+    interface OtpModal {
+        "visible"?: boolean;
+    }
+    interface PlainModal {
+        "visible"?: boolean;
+    }
     interface RedeemForm {
         "jwt"?: any;
     }
+    interface SummaryModal {
+        "visible"?: boolean;
+    }
     interface SwitchForm {
         "jwt"?: any;
+        "onOk"?: (event: CustomEvent<any>) => void;
+        "show"?: boolean;
+    }
+    interface SwitchFundModal {
+        "modalTitle"?: string;
+        "visible"?: boolean;
+    }
+    interface SwitchMobile {
+    }
+    interface TermsModal {
+        "visible"?: boolean;
     }
     interface UserComponent {
         "cssClass"?: string;
@@ -124,9 +218,16 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "add-form": AddForm;
         "button-component": ButtonComponent;
+        "funds-button": FundsButton;
         "my-component": MyComponent;
+        "otp-modal": OtpModal;
+        "plain-modal": PlainModal;
         "redeem-form": RedeemForm;
+        "summary-modal": SummaryModal;
         "switch-form": SwitchForm;
+        "switch-fund-modal": SwitchFundModal;
+        "switch-mobile": SwitchMobile;
+        "terms-modal": TermsModal;
         "user-component": UserComponent;
     }
 }
@@ -136,9 +237,16 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "add-form": LocalJSX.AddForm & JSXBase.HTMLAttributes<HTMLAddFormElement>;
             "button-component": LocalJSX.ButtonComponent & JSXBase.HTMLAttributes<HTMLButtonComponentElement>;
+            "funds-button": LocalJSX.FundsButton & JSXBase.HTMLAttributes<HTMLFundsButtonElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "otp-modal": LocalJSX.OtpModal & JSXBase.HTMLAttributes<HTMLOtpModalElement>;
+            "plain-modal": LocalJSX.PlainModal & JSXBase.HTMLAttributes<HTMLPlainModalElement>;
             "redeem-form": LocalJSX.RedeemForm & JSXBase.HTMLAttributes<HTMLRedeemFormElement>;
+            "summary-modal": LocalJSX.SummaryModal & JSXBase.HTMLAttributes<HTMLSummaryModalElement>;
             "switch-form": LocalJSX.SwitchForm & JSXBase.HTMLAttributes<HTMLSwitchFormElement>;
+            "switch-fund-modal": LocalJSX.SwitchFundModal & JSXBase.HTMLAttributes<HTMLSwitchFundModalElement>;
+            "switch-mobile": LocalJSX.SwitchMobile & JSXBase.HTMLAttributes<HTMLSwitchMobileElement>;
+            "terms-modal": LocalJSX.TermsModal & JSXBase.HTMLAttributes<HTMLTermsModalElement>;
             "user-component": LocalJSX.UserComponent & JSXBase.HTMLAttributes<HTMLUserComponentElement>;
         }
     }

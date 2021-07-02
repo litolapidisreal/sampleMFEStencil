@@ -1,0 +1,29 @@
+:host {
+  display: block;
+}
+.box {
+  margin-top: 10px;
+  width: 150px;
+  background: #EEBC33;
+  padding: 15px;
+  height: 80px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 2px #888888;
+  cursor: pointer;
+  text-align: center;
+
+  .icon {
+    height: 50px;
+    width: 50px;
+    display: block;
+    margin: 0 auto;
+
+    img {
+      height: 50px;
+    }
+  }
+
+  .fund {
+    margin-top: 0;
+  }
+}

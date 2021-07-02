@@ -23,8 +23,6 @@ export class AddForm {
 
   @Prop() jwt: any;
 
-  @Prop() text: string;
-
   @State() formStep: number = 0;
 
   @Event() emitter: EventEmitter<any>;
@@ -185,7 +183,9 @@ export class AddForm {
                   </div>
                 </section>
               : <div class="mt-2">
-                <p class="text-danger">Can't access <strong>add fund</strong> form.</p>
+                <div class="alert alert-danger" role="alert">
+                  Can't access <strong>add fund</strong> form.
+                </div>
               </div>
             }
           </div>

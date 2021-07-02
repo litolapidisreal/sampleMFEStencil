@@ -86,7 +86,9 @@ export class UserComponent {
                 </div>
               </section>
               : <div class="mt-2">
-                  <p class="text-danger">Can't access <strong>change address</strong> form.</p>
+                  <div class="alert alert-danger" role="alert">
+                    Can't access <strong>change address</strong> form.
+                  </div>
                 </div>
             }
           </div>

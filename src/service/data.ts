@@ -1,6 +1,7 @@
 class DataController {
 
-  API_URL = "http://localhost:8080";
+  API_URL = "http://localhost:8083";
+  OAUTH_URL = "http://localhost:9091"
 
   async getData(jwt: string) {
 
@@ -98,6 +99,32 @@ class DataController {
         body: JSON.stringify(data),
         headers: header
       })
+
+      return await response.json();
+    } catch (err) {
+      console.log("ERROR", err);
+    }
+  }
+
+  async requestToken() {
+    try {
+      const body = new URLSearchParams({
+        'grant_type': 'password',
+        'username': 'admin',
+        'password': 'password'
+      });
+
+      const header = new Headers({
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Basic ' + btoa('client_id:client_secret')
+
+      });
+
+      const response = await fetch(`${this.OAUTH_URL}/oauth/token`, {
+        method: 'POST',
+        body: body,
+        headers: header
+      });
 
       return await response.json();
     } catch (err) {
